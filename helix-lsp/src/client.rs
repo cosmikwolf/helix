@@ -315,10 +315,12 @@ impl Client {
                 capabilities.hover_provider,
                 Some(HoverProviderCapability::Simple(true) | HoverProviderCapability::Options(_),)
             ),
-            LanguageServerFeature::DocumentHighlight => matches!(
-                capabilities.document_highlight_provider,
-                Some(OneOf::Left(true) | OneOf::Right(_))
-            ),
+            LanguageServerFeature::DocumentHighlight => {
+                matches!(
+                    capabilities.document_highlight_provider,
+                    Some(OneOf::Left(true) | OneOf::Right(_))
+                )
+            }
             LanguageServerFeature::Completion => capabilities.completion_provider.is_some(),
             LanguageServerFeature::CodeAction => matches!(
                 capabilities.code_action_provider,
@@ -331,8 +333,8 @@ impl Client {
                 capabilities.execute_command_provider.is_some()
             }
             LanguageServerFeature::DocumentSymbols => matches!(
-                capabilities.document_symbol_provider,
-                Some(OneOf::Left(true) | OneOf::Right(_))
+                capabilities.document_symbol_provider, Some(OneOf::Left(true)),
+                // Some(OneOf::Left(true) | OneOf::Right(_))
             ),
             LanguageServerFeature::WorkspaceSymbols => matches!(
                 capabilities.workspace_symbol_provider,
@@ -636,6 +638,10 @@ impl Client {
                     inlay_hint: Some(lsp::InlayHintClientCapabilities {
                         dynamic_registration: Some(false),
                         resolve_support: None,
+                    }),
+                    document_symbol: Some(lsp::DocumentSymbolClientCapabilities {
+                        hierarchical_document_symbol_support: Some(true),
+                        ..Default::default()
                     }),
                     ..Default::default()
                 }),
