@@ -165,7 +165,7 @@ pub struct Document {
 
     last_saved_revision: usize,
     version: i32, // should be usize?
-    pub(crate) modified_since_accessed: bool,
+    pub modified_since_accessed: bool,
 
     pub(crate) diagnostics: Vec<Diagnostic>,
     pub(crate) language_servers: HashMap<LanguageServerName, Arc<Client>>,
