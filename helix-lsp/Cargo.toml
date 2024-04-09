@@ -15,7 +15,7 @@ homepage.workspace = true
 [dependencies]
 helix-stdx = { path = "../helix-stdx" }
 helix-core = { path = "../helix-core" }
-helix-loader = { path = "../helix-loader" }
+helix-loader = { workspace = true }
 helix-parsec = { path = "../helix-parsec" }
 
 anyhow = "1.0"

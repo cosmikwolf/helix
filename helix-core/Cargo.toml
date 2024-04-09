@@ -17,7 +17,7 @@ integration = []
 
 [dependencies]
 helix-stdx = { path = "../helix-stdx" }
-helix-loader = { path = "../helix-loader" }
+helix-loader = { workspace = true }
 
 ropey = { version = "1.6.1", default-features = false, features = ["simd"] }
 smallvec = "1.13"
