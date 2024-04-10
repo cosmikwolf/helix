@@ -73,7 +73,7 @@ where
 }
 
 fn default_timeout() -> u64 {
-    20
+    60
 }
 
 #[derive(Debug, Serialize, Deserialize)]

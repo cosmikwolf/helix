@@ -333,7 +333,8 @@ impl Client {
                 capabilities.execute_command_provider.is_some()
             }
             LanguageServerFeature::DocumentSymbols => matches!(
-                capabilities.document_symbol_provider, Some(OneOf::Left(true)),
+                capabilities.document_symbol_provider,
+                Some(OneOf::Left(true)),
                 // Some(OneOf::Left(true) | OneOf::Right(_))
             ),
             LanguageServerFeature::WorkspaceSymbols => matches!(
